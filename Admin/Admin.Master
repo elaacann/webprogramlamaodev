@@ -1,0 +1,120 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="webtabanliproje.Admin.Admin" %>
+
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Admin Panel</title>
+    <!-- Bootstrap 5 for modern styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .wrapper {
+            display: flex;
+            flex: 1;
+        }
+        #sidebar {
+            min-width: 250px;
+            max-width: 250px;
+            min-height: 100vh;
+            background: #111827;
+            color: #ecf0f1;
+            transition: all 0.3s;
+            border-right: 1px solid #374151;
+        }
+        #sidebar .sidebar-header {
+            padding: 20px;
+            background: #111827;
+            border-bottom: 1px solid #374151;
+        }
+        #sidebar ul.components {
+            padding: 20px 0;
+            border-bottom: 1px solid #374151;
+        }
+        #sidebar ul li a {
+            padding: 10px;
+            font-size: 1.1em;
+            display: block;
+            color: #d1d5db;
+            text-decoration: none;
+        }
+        #sidebar ul li a:hover {
+            color: #fff;
+            background: #374151;
+        }
+        #content {
+            width: 100%;
+            padding: 20px;
+            background-color: #0f0f0f;
+        }
+        .active-link {
+            background: #374151 !important;
+            color: #fff !important;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <!-- Sidebar -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Admin Panel</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <li>
+                        <a href="Dashboard.aspx"><i class="fas fa-tachometer-alt"></i> Panel</a>
+                    </li>
+                    <li>
+                        <a href="ManageProjects.aspx"><i class="fas fa-briefcase"></i> Projeler</a>
+                    </li>
+                    <li>
+                        <a href="ManageSkills.aspx"><i class="fas fa-code"></i> Yetenekler</a>
+                    </li>
+                    <li>
+                        <a href="ManageSocial.aspx"><i class="fas fa-share-alt"></i> Sosyal Medya</a>
+                    </li>
+                    <li>
+                        <a href="ManagePages.aspx"><i class="fas fa-file-alt"></i> Sayfalar</a>
+                    </li>
+                    <li>
+                        <a href="Settings.aspx"><i class="fas fa-cogs"></i> Ayarlar</a>
+                    </li>
+                    <li>
+                        <a href="Messages.aspx"><i class="fas fa-envelope"></i> Mesajlar</a>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="LogoutBtn" runat="server" OnClick="LogoutBtn_Click"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</asp:LinkButton>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Content -->
+            <div id="content">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+                    <div class="container-fluid">
+                        <span class="navbar-text">
+                            Hoşgeldiniz, Admin
+                        </span>
+                        <a href="../Default.aspx" target="_blank" class="btn btn-outline-primary btn-sm ms-auto">Siteyi Görüntüle</a>
+                    </div>
+                </nav>
+                <div class="container-fluid mt-4">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
